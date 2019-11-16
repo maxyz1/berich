@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: berich_development
+
+test:
+  <<: *default
+  database: berich_test
+
+production:
+  <<: *default
+  database: berich_production
+  username: berich
+  password: <%= ENV['BERICH_DATABASE_PASSWORD'] %>
